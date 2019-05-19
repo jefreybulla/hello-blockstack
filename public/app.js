@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function showProfile(profile) {
     var person = new blockstack.Person(profile)
+    console.log(person);
     document.getElementById('heading-name').innerHTML = person.name() ? person.name() : "Nameless Person"
     if(person.avatarUrl()) {
       document.getElementById('avatar-image').setAttribute('src', person.avatarUrl())
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   if (blockstack.isUserSignedIn()) {
     var profile = blockstack.loadUserData().profile
+      console.log(blockstack.loadUserData())
       showProfile(profile)
   } else if (blockstack.isSignInPending()) {
     blockstack.handlePendingSignIn().then(function(userData) {
